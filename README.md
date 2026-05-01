@@ -42,25 +42,25 @@ TaskFlow is a full-stack task management platform that lets users:
 ```
 task-management-app/
 +-- client/                 # React frontend
-¶   +-- src/
-¶   ¶   +-- components/    # Reusable UI components
-¶   ¶   +-- pages/         # Page views
-¶   ¶   +-- hooks/         # Custom hooks
-¶   ¶   +-- context/       # Zustand stores
-¶   ¶   +-- services/      # API and socket clients
-¶   ¶   +-- utils/         # Helper functions
-¶   ¶   +-- App.jsx
-¶   ¶   +-- main.jsx
-¶   +-- package.json
-¶   +-- vite.config.js
+ÔøΩ   +-- src/
+ÔøΩ   ÔøΩ   +-- components/    # Reusable UI components
+ÔøΩ   ÔøΩ   +-- pages/         # Page views
+ÔøΩ   ÔøΩ   +-- hooks/         # Custom hooks
+ÔøΩ   ÔøΩ   +-- context/       # Zustand stores
+ÔøΩ   ÔøΩ   +-- services/      # API and socket clients
+ÔøΩ   ÔøΩ   +-- utils/         # Helper functions
+ÔøΩ   ÔøΩ   +-- App.jsx
+ÔøΩ   ÔøΩ   +-- main.jsx
+ÔøΩ   +-- package.json
+ÔøΩ   +-- vite.config.js
 +-- server/                 # Express backend
     +-- src/
-    ¶   +-- controllers/   # Route handlers
-    ¶   +-- models/        # MongoDB schemas
-    ¶   +-- routes/        # API endpoints
-    ¶   +-- middleware/    # Auth and error handling
-    ¶   +-- utils/         # Utility functions
-    ¶   +-- index.js       # Server entry
+    ÔøΩ   +-- controllers/   # Route handlers
+    ÔøΩ   +-- models/        # MongoDB schemas
+    ÔøΩ   +-- routes/        # API endpoints
+    ÔøΩ   +-- middleware/    # Auth and error handling
+    ÔøΩ   +-- utils/         # Utility functions
+    ÔøΩ   +-- index.js       # Server entry
     +-- package.json
     +-- .env.example
 ```
@@ -97,18 +97,32 @@ Use this demo login to test the app quickly:
 - **Email:** `test@taskflow.com`
 - **Password:** `password123`
 
-## ?? Deployment
+## üöÄ Deployment
 
 For production, deploy the backend and frontend separately.
 
 ### Recommended Flow
 
-1. Deploy backend to **Railway** or **Render**
-2. Deploy frontend to **Vercel**
-3. Set `VITE_API_URL` to your backend URL in Vercel
-4. Set `CORS_ORIGIN` in the backend to your frontend domain
+1. Deploy backend to **Render** using the provided `render.yaml`.
+2. Deploy frontend to **Vercel** and point it at the backend URL.
+3. Set `VITE_API_URL` in Vercel to your deployed backend URL.
+4. Set `CORS_ORIGIN` in Render to your Vercel frontend URL.
 
-## ?? Notes
+### Render backend setup
+
+- Connect the GitHub repo to Render.
+- Use the root `render.yaml` to configure the service.
+- Add secret values for `MONGODB_URI`, `JWT_SECRET`, and `CORS_ORIGIN`.
+- Render will build with `cd server && npm install` and start with `cd server && npm start`.
+
+### Vercel frontend setup
+
+- Create a Vercel project from the same GitHub repo.
+- Set the project root to the repo root and use the existing `vercel.json`.
+- Add `VITE_API_URL` as an environment variable in Vercel.
+- Deploy the frontend after the backend is live.
+
+## üìù Notes
 
 - This project is built as a **portfolio-ready SaaS clone**
 - Great for demonstrating full-stack skills, modern UI, and real-time app development
@@ -116,4 +130,4 @@ For production, deploy the backend and frontend separately.
 
 ## ????? Author
 
-Built by **BerryTech** ó full-stack developer with a focus on modern React experiences.
+Built by **BerryTech** ÔøΩ full-stack developer with a focus on modern React experiences.

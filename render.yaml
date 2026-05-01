@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: task-management-backend
+    env: node
+    plan: starter
+    branch: main
+    buildCommand: cd server && npm install
+    startCommand: cd server && npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: "5000"
+      - key: MONGODB_URI
+        value: ""
+      - key: JWT_SECRET
+        value: ""
+      - key: JWT_EXPIRE
+        value: "7d"
+      - key: CORS_ORIGIN
+        value: ""
+    autoDeploy: true
