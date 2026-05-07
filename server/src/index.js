@@ -34,9 +34,11 @@ const io = new Server(server, {
         'http://localhost:5174',
         'http://localhost:5175',
         'http://localhost:3000',
+        'https://task-management-app.vercel.app',
         process.env.CORS_ORIGIN,
       ];
-      if (!origin || allowedOrigins.includes(origin)) {
+      const isVercelOrigin = origin?.endsWith('.vercel.app');
+      if (!origin || allowedOrigins.includes(origin) || isVercelOrigin) {
         callback(null, true);
       } else {
         callback(new Error('Not allowed by CORS'));
@@ -66,9 +68,11 @@ app.use(
         'http://localhost:5174',
         'http://localhost:5175',
         'http://localhost:3000',
+        'https://task-management-app.vercel.app',
         process.env.CORS_ORIGIN,
       ];
-      if (!origin || allowedOrigins.includes(origin)) {
+      const isVercelOrigin = origin?.endsWith('.vercel.app');
+      if (!origin || allowedOrigins.includes(origin) || isVercelOrigin) {
         callback(null, true);
       } else {
         callback(new Error('Not allowed by CORS'));
