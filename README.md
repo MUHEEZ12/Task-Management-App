@@ -115,6 +115,18 @@ For production, deploy the backend and frontend separately.
 - Add secret values for `MONGODB_URI`, `JWT_SECRET`, and `CORS_ORIGIN`.
 - Render will build with `cd server && npm install` and start with `cd server && npm start`.
 
+### Existing Atlas cluster
+
+If you already have a MongoDB Atlas cluster for your recipe app, you can reuse the same cluster.
+
+Example for a separate backend database:
+
+```text
+mongodb+srv://berryrecipes:<password>@cluster0.vljmkqv.mongodb.net/task-management?retryWrites=true&w=majority
+```
+
+If you want to keep the same database as the recipe app, use the existing database name instead of `task-management`.
+
 ### Vercel frontend setup
 
 - Create a Vercel project from the same GitHub repo.
