@@ -8,7 +8,7 @@ import { TaskTemplates } from './TaskTemplates';
 import { taskService } from '../services';
 import { useNotification } from '../hooks/useNotification';
 
-export const Column = ({ column, boardId, onTaskUpdate, onTaskDelete, onTaskMove, tasks = [], loading }) => {
+export const Column = ({ column, boardId, onTaskUpdate, onTaskDelete, onTaskMove, onTaskClick, tasks = [], loading }) => {
   const [showNewTask, setShowNewTask] = useState(false);
   const [title, setTitle] = useState('');
   const [isCreating, setIsCreating] = useState(false);
@@ -109,7 +109,7 @@ export const Column = ({ column, boardId, onTaskUpdate, onTaskDelete, onTaskMove
                       index={index}
                       onUpdate={(id, updated) => onTaskUpdate(id, updated)}
                       onDelete={onTaskDelete}
-                      onClick={() => {}}
+                      onClick={() => onTaskClick?.(task)}
                     />
                   </motion.div>
                 ))}

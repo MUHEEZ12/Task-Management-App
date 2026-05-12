@@ -14,6 +14,7 @@ import { TopBar } from '../components/TopBar';
 import { LoadingSkeleton } from '../components/LoadingSkeleton';
 import { AdvancedSearch } from '../components/AdvancedSearch';
 import { PomodoroTimer } from '../components/PomodoroTimer';
+import { TaskDetailModal } from '../components/TaskDetailModal';
 import { useKeyboardShortcuts } from '../hooks/useKeyboardShortcuts';
 
 export const BoardPage = () => {
@@ -26,6 +27,8 @@ export const BoardPage = () => {
   const [showActivityPanel, setShowActivityPanel] = useState(false);
   const [showAdvancedSearch, setShowAdvancedSearch] = useState(false);
   const [filteredTasks, setFilteredTasks] = useState([]);
+  const [selectedTask, setSelectedTask] = useState(null);
+  const [isTaskModalOpen, setIsTaskModalOpen] = useState(false);
 
   useEffect(() => {
     loadBoard();
@@ -121,6 +124,16 @@ export const BoardPage = () => {
     if (socket) {
       socketEvents.taskDeleted({ boardId, taskId });
     }
+  };
+
+  const handleTaskClick = (task) => {
+    setSelectedTask(task);
+    setIsTaskModalOpen(true);
+  };
+
+  const handleCloseTaskModal = () => {
+    setIsTaskModalOpen(false);
+    setSelectedTask(null);
   };
 
   const handleDragEnd = (result) => {
@@ -247,8 +260,7 @@ export const BoardPage = () => {
                       boardId={boardId}
                       tasks={columnTasks}
                       onTaskUpdate={handleTaskUpdate}
-                      onTaskDelete={handleTaskDelete}
-                      loading={loading}
+                      onTaskDelete={handleTaskDelete}                      onTaskClick={handleTaskClick}                      loading={loading}
                     />
                   );
                 })}
@@ -270,6 +282,13 @@ export const BoardPage = () => {
         boardId={boardId}
         isOpen={showActivityPanel}
         onClose={() => setShowActivityPanel(false)}
+      />
+
+      <TaskDetailModal
+        task={selectedTask}
+        isOpen={isTaskModalOpen}
+        onClose={handleCloseTaskModal}
+        onUpdate={(id, updated) => handleTaskUpdate(id, updated)}
       />
 
       {showAdvancedSearch && (
