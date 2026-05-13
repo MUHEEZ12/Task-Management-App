@@ -1,6 +1,11 @@
 {
   "version": 2,
   "outputDirectory": "client/dist",
+  "buildCommand": "cd client && VITE_API_URL=https://task-management-app-kljf.onrender.com VITE_SOCKET_URL=https://task-management-app-kljf.onrender.com npm run build",
+  "env": {
+    "VITE_API_URL": "https://task-management-app-kljf.onrender.com",
+    "VITE_SOCKET_URL": "https://task-management-app-kljf.onrender.com"
+  },
   "rewrites": [
     {
       "source": "/(.*)",

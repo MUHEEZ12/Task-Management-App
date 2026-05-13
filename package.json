@@ -2,7 +2,7 @@
   "name": "task-management-app",
   "private": true,
   "scripts": {
-    "build": "cd client && npm install && npm run build",
-    "vercel-build": "cd client && npm install && npm run build"
+    "build": "cd client && VITE_API_URL=https://task-management-app-kljf.onrender.com VITE_SOCKET_URL=https://task-management-app-kljf.onrender.com npm install && npm run build",
+    "vercel-build": "cd client && VITE_API_URL=https://task-management-app-kljf.onrender.com VITE_SOCKET_URL=https://task-management-app-kljf.onrender.com npm install && npm run build"
   }
 }
